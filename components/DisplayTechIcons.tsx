@@ -1,30 +1,36 @@
-import Image from "next/image";
+"use client";
 
-import { cn, getTechLogos } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import { getTechLogos } from "@/lib/utils";
+import TechIcon from "./TechIcon";
 
-const DisplayTechIcons = async ({ techStack }: TechIconProps) => {
-  const techIcons = await getTechLogos(techStack);
+interface TechIconData {
+  tech: string;
+  url: string;
+  fallbackUrl?: string;
+}
+
+interface DisplayTechIconsProps {
+  techStack: string[];
+}
+
+const DisplayTechIcons = ({ techStack }: DisplayTechIconsProps) => {
+  const [techIcons, setTechIcons] = useState<TechIconData[]>([]);
+
+  useEffect(() => {
+    getTechLogos(techStack).then(setTechIcons);
+  }, [techStack]);
 
   return (
-    <div className="flex flex-row">
-      {techIcons.slice(0, 3).map(({ tech, url }, index) => (
-        <div
+    <div className="flex flex-row gap-16">
+      {techIcons.slice(0, 3).map(({ tech, url, fallbackUrl }, index) => (
+        <TechIcon
           key={tech}
-          className={cn(
-            "relative group bg-dark-300 rounded-full p-2 flex flex-center",
-            index >= 1 && "-ml-3"
-          )}
-        >
-          <span className="tech-tooltip">{tech}</span>
-
-          <Image
-            src={url}
-            alt={tech}
-            width={100}
-            height={100}
-            className="size-5"
-          />
-        </div>
+          tech={tech}
+          url={url}
+          fallbackUrl={fallbackUrl}
+          index={index}
+        />
       ))}
     </div>
   );

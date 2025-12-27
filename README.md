@@ -8,12 +8,12 @@
   
   <div>
     <img src="https://img.shields.io/badge/-Next.JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=black" alt="next.js" />
-    <img src="https://img.shields.io/badge/-Vapi-white?style=for-the-badge&color=5dfeca" alt="vapi" />
+    <img src="https://img.shields.io/badge/-ElevenLabs-white?style=for-the-badge&color=11labs" alt="elevenlabs" />
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
     <img src="https://img.shields.io/badge/-Firebase-black?style=for-the-badge&logoColor=white&logo=firebase&color=DD2C00" alt="firebase" />
   </div>
 
-  <h3 align="center">Prepwise: A job interview preparation platform powered by Vapi AI Voice agents</h3>
+  <h3 align="center">Prepwise: A job interview preparation platform powered by ElevenLabs AI Voice agents</h3>
 
    <div align="center">
      Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
@@ -40,7 +40,7 @@ If you prefer visual learning, this is the perfect resource for you. Follow our 
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built with Next.js for the user interface and backend logic, Firebase for authentication and data storage, styled with TailwindCSS and using Vapi's voice agents, Prepwise is a website project designed to help you learn integrating AI models with your apps. The platform offers a sleek and modern experience for job interview preparation.
+Built with Next.js for the user interface and backend logic, Firebase for authentication and data storage, styled with TailwindCSS and using ElevenLabs' voice agents, Prepwise is a website project designed to help you learn integrating AI models with your apps. The platform offers a sleek and modern experience for job interview preparation.
 
 If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
 
@@ -51,7 +51,7 @@ If you're getting started and need assistance or face any bugs, join our active 
 - Next.js
 - Firebase
 - Tailwind CSS
-- Vapi AI
+- ElevenLabs AI
 - shadcn/ui
 - Google Gemeni
 - Zod
@@ -60,7 +60,7 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 👉 **Authentication**: Sign Up and Sign In using password/email authentication handled by Firebase.
 
-👉 **Create Interviews**: Easily generate job interviews with help of Vapi voice assistants and Google Gemini.
+👉 **Create Interviews**: Easily generate job interviews with help of ElevenLabs voice assistants and Google Gemini.
 
 👉 **Get feedback from AI**: Take the interview with AI voice agent, and receive instant feedback based on your conversation.
 
@@ -106,8 +106,8 @@ npm install
 Create a new file named `.env.local` in the root of your project and add the following content:
 
 ```env
-NEXT_PUBLIC_VAPI_WEB_TOKEN=
-NEXT_PUBLIC_VAPI_WORKFLOW_ID=
+# ElevenLabs configuration (no API keys needed for web-based interview agent)
+# The interview agent opens in a new browser window
 
 GOOGLE_GENERATIVE_AI_API_KEY=
 
@@ -125,7 +125,9 @@ FIREBASE_CLIENT_EMAIL=
 FIREBASE_PRIVATE_KEY=
 ```
 
-Replace the placeholder values with your actual **[Firebase](https://firebase.google.com/)**, **[Vapi](https://vapi.ai/?utm_source=youtube&utm_medium=video&utm_campaign=jsmastery_recruitingpractice&utm_content=paid_partner&utm_term=recruitingpractice)** credentials.
+Replace the placeholder values with your actual **[Firebase](https://firebase.google.com/)** credentials.
+
+**Note**: This version uses ElevenLabs interview agent that opens in a new browser window. No API keys are required for the voice interview functionality.
 
 **Running the Project**
 

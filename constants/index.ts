@@ -1,19 +1,18 @@
-import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { z } from "zod";
 
 export const mappings = {
   "react.js": "react",
   reactjs: "react",
   react: "react",
-  "next.js": "nextjs",
-  nextjs: "nextjs",
+  "next.js": "next js",
+  nextjs: "next js",
   next: "nextjs",
   "vue.js": "vuejs",
   vuejs: "vuejs",
   vue: "vuejs",
   "express.js": "express",
-  expressjs: "express",
-  express: "express",
+  expressjs: "expressjs",
+  express: "expressjs",
   "node.js": "nodejs",
   nodejs: "nodejs",
   node: "nodejs",
@@ -26,13 +25,15 @@ export const mappings = {
   firebase: "firebase",
   docker: "docker",
   kubernetes: "kubernetes",
-  aws: "aws",
+  aws: "aws.png",
   azure: "azure",
   gcp: "gcp",
   digitalocean: "digitalocean",
   heroku: "heroku",
   photoshop: "photoshop",
-  "adobe photoshop": "photoshop",
+  "adobe photoshop": "adobe",
+  "adobe xd": "adobe",
+  adobe: "adobe.png",
   html5: "html5",
   html: "html5",
   css3: "css3",
@@ -71,6 +72,7 @@ export const mappings = {
   npm: "npm",
   yarn: "yarn",
   git: "git",
+  jira: "jira.webp",
   github: "github",
   gitlab: "gitlab",
   bitbucket: "bitbucket",
@@ -95,65 +97,25 @@ export const mappings = {
   netlify: "netlify",
   vercel: "vercel",
   "aws amplify": "amplify",
+  wasp: "wasp.png",
+  burpsuite: "burpsuite.png",
+  spark: "spark.avif",
+  airflow: "airflow",
+  sql: "sql",
+  powerbi: "powerbi",
+  "power bi": "powerbi",
+  excel: "xls",
+  xls: "xls",
+  python: "python",
+  "react native": "react native.jpg",
+  reactnative: "react native.jpg",
 };
 
-export const interviewer: CreateAssistantDTO = {
-  name: "Interviewer",
-  firstMessage:
-    "Hello! Thank you for taking the time to speak with me today. I'm excited to learn more about you and your experience.",
-  transcriber: {
-    provider: "deepgram",
-    model: "nova-2",
-    language: "en",
-  },
-  voice: {
-    provider: "11labs",
-    voiceId: "sarah",
-    stability: 0.4,
-    similarityBoost: 0.8,
-    speed: 0.9,
-    style: 0.5,
-    useSpeakerBoost: true,
-  },
-  model: {
-    provider: "openai",
-    model: "gpt-4",
-    messages: [
-      {
-        role: "system",
-        content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the role.
-
-Interview Guidelines:
-Follow the structured question flow:
-{{questions}}
-
-Engage naturally & react appropriately:
-Listen actively to responses and acknowledge them before moving forward.
-Ask brief follow-up questions if a response is vague or requires more detail.
-Keep the conversation flowing smoothly while maintaining control.
-Be professional, yet warm and welcoming:
-
-Use official yet friendly language.
-Keep responses concise and to the point (like in a real voice interview).
-Avoid robotic phrasing—sound natural and conversational.
-Answer the candidate’s questions professionally:
-
-If asked about the role, company, or expectations, provide a clear and relevant answer.
-If unsure, redirect the candidate to HR for more details.
-
-Conclude the interview properly:
-Thank the candidate for their time.
-Inform them that the company will reach out soon with feedback.
-End the conversation on a polite and positive note.
-
-
-- Be sure to be professional and polite.
-- Keep all your responses short and simple. Use official language, but be kind and welcoming.
-- This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.`,
-      },
-    ],
-  },
-};
+// ElevenLabs interview agent configuration
+// Configuration is now handled through environment variables:
+// NEXT_PUBLIC_ELEVENLABS_AGENT_ID
+// NEXT_PUBLIC_ELEVENLABS_BRANCH_ID  
+// NEXT_PUBLIC_ELEVENLABS_BASE_URL
 
 export const feedbackSchema = z.object({
   totalScore: z.number(),
@@ -207,24 +169,206 @@ export const interviewCovers = [
 export const dummyInterviews: Interview[] = [
   {
     id: "1",
-    userId: "user1",
+    userId: "demo",
     role: "Frontend Developer",
     type: "Technical",
-    techstack: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+    techstack: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Wasp", "Burpsuite", "Spark", "Airflow", "SQL", "PowerBI", "XLS", "Adobe", "React Native"],
     level: "Junior",
-    questions: ["What is React?"],
-    finalized: false,
+    questions: [
+      "Explain the Virtual DOM in React.",
+      "What is the difference between state and props?",
+      "How do you optimize performance in a large React application?",
+      "How does routing work in a Next.js app?",
+      "How would you structure a responsive layout with Tailwind CSS?",
+    ],
+    finalized: true,
     createdAt: "2024-03-15T10:00:00Z",
   },
   {
     id: "2",
-    userId: "user1",
+    userId: "demo",
     role: "Full Stack Developer",
     type: "Mixed",
     techstack: ["Node.js", "Express", "MongoDB", "React"],
     level: "Senior",
-    questions: ["What is Node.js?"],
-    finalized: false,
+    questions: [
+      "Describe a typical full stack architecture you have worked with.",
+      "How do you design the API layer between frontend and backend?",
+      "When would you choose NoSQL databases like MongoDB over SQL?",
+      "How do you handle authentication and authorization in a full stack app?",
+      "Explain how you would debug a production-only bug across the stack.",
+    ],
+    finalized: true,
     createdAt: "2024-03-14T15:30:00Z",
+  },
+  {
+    id: "3",
+    userId: "demo",
+    role: "Backend Engineer",
+    type: "Technical",
+    techstack: ["Node.js", "Express", "PostgreSQL", "Redis"],
+    level: "Mid",
+    questions: [
+      "How would you design a rate limiting system for an API?",
+      "Explain the difference between vertical and horizontal scaling.",
+      "How do you design database schemas for high-traffic services?",
+      "What strategies do you use to handle long-running background jobs?",
+      "How do you approach logging and monitoring for backend services?",
+    ],
+    finalized: true,
+    createdAt: "2024-03-13T09:20:00Z",
+  },
+  {
+    id: "4",
+    userId: "demo",
+    role: "Data Engineer",
+    type: "Technical",
+    techstack: ["Python", "Spark", "Airflow", "Kafka"],
+    level: "Senior",
+    questions: [
+      "Explain the difference between batch and streaming pipelines.",
+      "How do you design a data warehouse for analytics?",
+      "What is the role of a message broker like Kafka in data engineering?",
+      "How do you ensure data quality and reliability in your pipelines?",
+      "Describe how you would schedule and monitor ETL jobs.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-12T16:45:00Z",
+  },
+  {
+    id: "5",
+    userId: "demo",
+    role: "DevOps Engineer",
+    type: "Mixed",
+    techstack: ["AWS", "Docker", "Kubernetes", "Terraform"],
+    level: "Mid",
+    questions: [
+      "How do you design a CI/CD pipeline for a microservices app?",
+      "What is the difference between blue-green and canary deployments?",
+      "How do you manage infrastructure as code with tools like Terraform?",
+      "How do you set up observability for containers in Kubernetes?",
+      "How do you handle secrets management in cloud environments?",
+    ],
+    finalized: true,
+    createdAt: "2024-03-11T11:10:00Z",
+  },
+  {
+    id: "6",
+    userId: "demo",
+    role: "Mobile Developer",
+    type: "Technical",
+    techstack: ["React Native", "TypeScript", "Expo"],
+    level: "Junior",
+    questions: [
+      "How do you handle navigation and state in React Native apps?",
+      "What are the differences between React and React Native?",
+      "How do you optimize performance for mobile devices?",
+      "How do you manage different environments (dev, staging, prod) in a mobile app?",
+      "Explain how you would integrate native modules into a React Native app.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-10T08:05:00Z",
+  },
+  {
+    id: "7",
+    userId: "demo",
+    role: "Machine Learning Engineer",
+    type: "Technical",
+    techstack: ["Python", "TensorFlow", "PyTorch", "Scikit-learn"],
+    level: "Senior",
+    questions: [
+      "How do you prevent overfitting in a machine learning model?",
+      "Explain the difference between supervised and unsupervised learning.",
+      "How do you select the right evaluation metric for a model?",
+      "Describe your approach to feature engineering on a new dataset.",
+      "How do you deploy and monitor machine learning models in production?",
+    ],
+    finalized: true,
+    createdAt: "2024-03-09T17:25:00Z",
+  },
+  {
+    id: "8",
+    userId: "demo",
+    role: "Product Manager",
+    type: "Behavioral",
+    techstack: ["Jira", "Figma"],
+    level: "Mid",
+    questions: [
+      "Tell me about a time you had to prioritize conflicting requests.",
+      "How do you define and validate success metrics for a new feature?",
+      "Describe how you work with design and engineering to ship a product.",
+      "How do you handle stakeholders who disagree with your roadmap?",
+      "Walk me through how you would launch a new product from scratch.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-08T13:40:00Z",
+  },
+  {
+    id: "9",
+    userId: "demo",
+    role: "UI/UX Designer",
+    type: "Behavioral",
+    techstack: ["Figma", "Adobe XD"],
+    level: "Junior",
+    questions: [
+      "How do you approach designing for both mobile and desktop?",
+      "What is your process from initial brief to final UI delivery?",
+      "How do you validate that your designs solve user problems?",
+      "How do you collaborate with developers during implementation?",
+      "Explain how you use design systems to keep interfaces consistent.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-07T10:30:00Z",
+  },
+  {
+    id: "10",
+    userId: "demo",
+    role: "Cloud Architect",
+    type: "Technical",
+    techstack: ["AWS", "Azure", "GCP"],
+    level: "Senior",
+    questions: [
+      "How do you design a highly available system on the cloud?",
+      "Explain the differences between IaaS, PaaS, and SaaS.",
+      "How do you choose between AWS, Azure, and GCP for a project?",
+      "How do you design for disaster recovery and failover?",
+      "Describe how you secure a multi-account cloud environment.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-06T09:15:00Z",
+  },
+  {
+    id: "11",
+    userId: "demo",
+    role: "Security Engineer",
+    type: "Technical",
+    techstack: ["Linux", "OWASP", "Burp Suite"],
+    level: "Mid",
+    questions: [
+      "What steps do you take to secure a REST API?",
+      "How do you identify and mitigate common web vulnerabilities?",
+      "Describe how you would run and act on a security audit.",
+      "How do you handle secrets and credentials securely?",
+      "Explain the principle of least privilege and how you apply it.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-05T18:00:00Z",
+  },
+  {
+    id: "12",
+    userId: "demo",
+    role: "Data Analyst",
+    type: "Mixed",
+    techstack: ["SQL", "Power BI", "Excel"],
+    level: "Junior",
+    questions: [
+      "Describe how you would analyze a sudden drop in user engagement.",
+      "How do you structure SQL queries for performance and clarity?",
+      "Tell me about a dashboard you built that influenced a decision.",
+      "How do you clean and prepare data before analysis?",
+      "Explain how you would run and interpret an A/B test.",
+    ],
+    finalized: true,
+    createdAt: "2024-03-04T14:55:00Z",
   },
 ];

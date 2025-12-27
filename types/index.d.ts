@@ -36,6 +36,15 @@ interface User {
   name: string;
   email: string;
   id: string;
+  role?: string;
+  experience?: string;
+  experienceLevel?: string;
+  preferredRole?: string;
+  preferredTechStack?: string[];
+  techstack?: string[];
+  profileURL?: string;
+  theme?: string;
+  interviewLanguage?: string;
 }
 
 interface InterviewCardProps {
